@@ -1,0 +1,136 @@
+14.for app.java:
+
+	package start.start_Of_E;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+//      System.out.println( "Hello World!" );
+//       ApplicationContext c = new ClassPathXmlApplicationContext("start/start_Of_E/connecter.xml");
+//      people peop = c.getBean("peop",people.class);     System.out.println(peop);
+//    	
+    
+    	ApplicationContext c = new ClassPathXmlApplicationContext("start/start_Of_E/p.xml");
+    	barika bb=c.getBean(barika.class);
+    	System.out.println("barika"+bb);
+    	   
+}
+}
+
+2.for address in here pravi:
+	package start.start_Of_E;
+
+public class pravi {
+
+	String p;  
+	String b;
+	public String getP() {
+		return p;
+	}
+	public void setP(String p) {
+		this.p = p;
+	}
+	public String getB() {
+		return b;
+	}
+	public void setB(String b) {
+		this.b = b;
+	}
+	public pravi(String p, String b) {
+		super();
+		this.p = p;
+		this.b = b;
+	}
+	public pravi() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "pravi [p=" + p + ", b=" + b + "]";
+	}
+	
+	
+}
+
+
+3.for emp class in here barika :
+	package start.start_Of_E;
+
+import org.springframework.beans.factory.annotation.*;
+public class barika {
+	@Autowired
+	@Qualifier("pp1")
+	 private pravi pb;
+
+	public pravi getPb() {
+		return pb;
+	}
+
+	public void setPb(pravi pb) {
+		this.pb = pb;
+	}
+
+	public barika(pravi pb) {
+		super();
+		this.pb = pb;
+	}
+
+	public barika() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "barika [pb=" + pb + "]";
+	}
+	
+
+	
+}
+
+
+4.for config.xml in here p.xml:
+	<?xml version="1.0" encoding="UTF-8"?>
+ <beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:oxm="http://www.springframework.org/schema/oxm"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+            http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+    <context:annotation-config />
+    
+    
+    <bean class="start.start_Of_E.pravi" name="pp"> 
+    <property name="p" > <value>hai praveen </value> </property>
+    <property name="b">  <value>hai barika </value>     </property>
+    </bean>
+    
+    
+    <bean class="start.start_Of_E.pravi" name="pp1">
+     <property name="p" > <value>what  praveen </value> </property>
+    <property name="b">  <value>what  barika </value>     </property>
+    </bean> 
+    
+    <bean class="start.start_Of_E.barika" name="bb"> </bean>
+    
+    </beans>

@@ -1,0 +1,64 @@
+		THIS IS FOR SPRINGbOOT FOR @RestController.
+
+			Procedure To Create 
+>>>1.install Spring Boot Extension Pack v0.2.1   && Maven for Java  v0.44.0  && Project Manager for Java  && Extension pack for java
+
+>>> create a new fodler and open it in vscode ide.
+'
+>>> ctrl+shift+p or go to view>command pallete >
+	.Search for create maven project and select >>Spring initilization project
+						>>version
+						>>java >>GprupId in here (xe)>>ArtifactId (de) >> jar >> version >> 
+						>>Select dependies 1.Spring Web 2.Spring boot dev tools 3.JPA 4.H2 5.Spring Security
+						>>Enter
+						>>Generate in this folder 
+
+
+>>>go to {Artificat-Name}Appliacation.java in here DeApplication.java (it's default one)
+
+
+for DeApplicaton.java 
+	>> package com.ex.de;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RestController;
+@RestController
+@SpringBootApplication
+public class DeApplication {
+	
+	public static void main(String[] args) {
+		SpringApplication.run(DeApplication.class, args);
+	}
+
+}
+
+
+>>>Create a new javafile next to application.java file with name {Artifact-Name}Controller.java  in here  DeController.java
+
+for DeController.java
+	>>package com.ex.de;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+@RestController 
+public class DeController {
+@GetMapping("/") 
+public String Welcome(){
+    return ("<h1>go back</h1>");
+
+}
+    
+}
+>>> navigate to resources folder -> application.properties
+ for the application.properties
+spring.security.user.name=kiran
+spring.security.user.password=1234
+server.port=8099
+
+
+
+
+
+	
+
+

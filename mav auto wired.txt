@@ -1,0 +1,209 @@
+1.in app.java
+	package start.start_Of_E;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+      System.out.println( "Hello World!" );
+       ApplicationContext c = new ClassPathXmlApplicationContext("start/start_Of_E/connecter.xml");
+      people peop = c.getBean("peop",people.class);     System.out.println(peop);
+    	
+    
+    
+}
+}
+
+
+
+
+2.for addres class in here its ofto:
+	/**
+ * 
+ */
+package start.start_Of_E;
+
+/**
+ * 
+ */
+public class ofto {
+	private String state;
+	private int citycode;
+	private String city;
+	/**
+	 * @return the state
+	 */
+	public String getState() {
+		return state;
+	}
+	/**
+	 * @param state the state to set
+	 */
+	public void setState(String state) {
+		this.state = state;
+	}
+	/**
+	 * @return the citycode
+	 */
+	public int getCitycode() {
+		return citycode;
+	}
+	/**
+	 * @param citycode the citycode to set
+	 */
+	public void setCitycode(int citycode) {
+		this.citycode = citycode;
+	}
+	/**
+	 * @return the city
+	 */
+	public String getCity() {
+		return city;
+	}
+	/**
+	 * @param city the city to set
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	@Override
+	public String toString() {
+		return "ofto [state=" + state + ", citycode=" + citycode + ", city=" + city + "]";
+	}
+	
+	
+}
+
+3.for emp class in here people:
+
+	/**
+ * 
+ */
+package start.start_Of_E;
+
+import org.springframework.beans.factory.annotation.Autowired;
+/**
+import org.springframework.beans.factory.annotation.Qualifire;
+
+ 
+ */
+public class people {
+	@Autowired
+	
+	private ofto ofto;
+
+	/**
+	 * @return the ofto
+	 */
+	public ofto getOfto() {
+		return ofto;
+	}
+
+	/**
+	 * @param ofto the ofto to set
+	 */
+	public void setOfto(ofto ofto) {
+		System.out.println("setter");
+		this.ofto = ofto;
+	}
+	
+	
+
+
+	public people(start.start_Of_E.ofto ofto) {
+		super();
+		this.ofto = ofto;
+		
+	}
+	
+	
+	public people() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "people [ofto=" + ofto + "]";
+	}
+	
+	
+
+}
+
+
+4.for conj.xml in here connecter.xml :
+	
+	search : what xmlns and schemalocations to use in 
+		 spring context.
+
+	<!--  <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:p="http://www.springframework.org/schema/p"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd
+   http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+<context:annotation-config />
+
+<bean class="start.start_Of_E.ofto" name="tem">
+<property name="state">
+<value> West-Bengal </value>
+ </property>
+ 
+ <property name="city">
+<value> Darjeeling </value>
+ </property>
+ 
+ <property name="citycode">
+<value> 583102</value>
+ </property>
+</bean>
+
+
+<!--  
+
+<bean class="start.start_Of_E.ofto" name="temp">
+<property name="state">
+<value> West-Bengal </value>
+ </property>
+ 
+ <property name="city">
+<value> Darjeeling </value>
+ </property>
+ 
+ <property name="citycode">
+<value> 583102</value>
+ </property>
+</bean>
+
+-->
+
+<bean class=" start.start_Of_E.people"  name="peop"/>
+
+
+</beans>
+<!-- more bean definitions go here -->
+
+	
